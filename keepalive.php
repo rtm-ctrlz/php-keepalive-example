@@ -98,6 +98,11 @@ function get_tcp_option_ids(): array
             'TCP_KEEPINTVL' => 0x101,
             'TCP_KEEPCNT'   => 0x102,
         ],
+        'BSD'    => [
+            'TCP_KEEPIDLE'  => 256,
+            'TCP_KEEPINTVL' => 512,
+            'TCP_KEEPCNT'   => 1024,
+        ],
     ];
     if (!array_key_exists(PHP_OS_FAMILY, $TCP_OPTION_IDS)) {
         throw new Error('Unsupported OS');

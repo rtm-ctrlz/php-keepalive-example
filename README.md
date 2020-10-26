@@ -23,7 +23,7 @@ Most systems (OSes) have following defaults:
 | SO_KEEPALIVE | 0 | TCP Keep-Alive is disabled |
 | TCP_KEEPIDLE | 7200 | 2 hours |
 | TCP_KEEPINTVL | 75 | 75 seconds |
-| TCP_KEEPCNT | 8 | |
+| TCP_KEEPCNT | 8 | 8 probes before drop connection |
 
 
 # Gotchas
@@ -34,14 +34,15 @@ Unfortunately PHP doesn't have `TCP_KEEPIDLE`, `TCP_KEEPINTVL` and `TCP_KEEPCNT`
 Since most OSes can handle TCP Keep-Alive it is the matter of time to find correct numbers.
 
 #### Found values
-| Option | Linux | Darwin |
-|-|:-:|:-:|
-|TCP_KEEPIDLE| `4` | `16` |
-|TCP_KEEPINTVL| `5` | `257` |
-|TCP_KEEPCNT| `6` | `258` | 
+| Option | Linux | Darwin | BSD |
+|-|:-:|:-:|:-:|
+|TCP_KEEPIDLE| `4` | `16` | `256` |
+|TCP_KEEPINTVL| `5` | `257` | `512` |
+|TCP_KEEPCNT| `6` | `258` |  `1024` |
 
-Linux: `man 7 tcp` + `tcp.h` include
-Darwin: `tcp.h` include
+Linux: Linux [tcp.h](https://github.com/torvalds/linux/blob/master/include/uapi/linux/tcp.h)
+Darwin: Darwin XNU [tcp.h](https://github.com/apple/darwin-xnu/blob/master/bsd/netinet/tcp.h)
+BSD: FreeBSD [tcp.h](https://github.com/freebsd/freebsd/blob/master/sys/netinet/tcp.h)
 
 
 ### Streams
