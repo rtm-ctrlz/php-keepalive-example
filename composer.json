@@ -1,0 +1,17 @@
+{
+  "name": "rtm-ctrlz/php-keepalive-example",
+  "description": "TCP Keep-Alive usage example",
+  "type": "metapackage",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ilya Urvachev",
+      "email": "rtm@ctrlz.ru"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "ext-sockets": "*",
+    "ext-openssl": "*"
+  }
+}
