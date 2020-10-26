@@ -87,6 +87,7 @@ Directory [tcp](tcp) contains:
  - [stream-server](tcp/stream-server.php) - echo server, `stream_socket_server` + `socket_import_stream`
 
 As a common server you can use netcat: `nc -kl 9898`
+
 As a common client you also can use netcat: `nc 127.0.0.1 9898`
 
 ## SSL/TLS
